@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte/internal";
+	import { tick } from 'svelte';
 
 	let hue;
+
+	let messageContainer;
 
 	let username = "";
 	let message = "";
@@ -47,17 +50,22 @@
 				if (emote) {
 					temp.push({
 						txt: emote.img,
-						img: true,
+						alt: emote.code,
 					});
 				} else {
 					temp.push({
 						txt: `${word} `,
-						img: false,
+						alt: "",
 					});
 				}
 			});
 			payload.msg = temp;
 			messages = [...messages, payload];
+
+			if(messageContainer) {
+				await tick();
+				messageContainer.scrollTop = messageContainer.scrollHeight;
+			}
 		});
 	});
 
@@ -80,14 +88,14 @@
 </script>
 
 <div class="notification is-link m-2 is-size-4">Ain't it cool? 😎</div>
-<div id="messages" class="mr-2">
+<div bind:this={messageContainer} id="messages" class="mr-2">
 	<div>
 		{#each messages as { user, msg, hue }}
 			<p class="msg p-2">
 				<span style="color: hsl({hue},90%,75%)">{user}:</span>
-				{#each msg as { txt, img }}
-					{#if img}
-						<img alt="test" src={txt} />
+				{#each msg as { txt, alt }}
+					{#if alt}
+						<img alt={alt} src={txt} />
 					{:else}
 						{txt}
 					{/if}

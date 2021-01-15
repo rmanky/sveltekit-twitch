@@ -9,17 +9,23 @@
         ({ Player, Ui, Hls } = module);
 
         const response = await fetch("/media");
-		const data = await response.json();
+        const data = await response.json();
         ({ mediaURL } = data);
     });
 
     const config = {
+        enableWorker: true,
+        maxBufferLength: 1,
+        liveBackBufferLength: 0,
+        liveSyncDuration: 0,
+        liveMaxLatencyDuration: 5,
         liveDurationInfinity: true,
+        highBufferWatchdogPeriod: 1,
     };
 </script>
 
 <div>
-    {#if Player}
+    {#if mediaURL}
         <Player controls>
             <Hls version="latest" {config}>
                 <source
