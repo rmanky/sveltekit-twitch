@@ -2,6 +2,10 @@
 	import { onMount } from "svelte/internal";
 	import { tick } from 'svelte';
 
+	//import { io } from 'socket.io-client';
+
+	//console.log(io);
+
 	let hue;
 
 	let messageContainer;

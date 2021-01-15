@@ -7,5 +7,8 @@ module.exports = {
 	},
 	alias: {
 		$components: './src/components'
+	},
+	packageOptions: {
+		//source: "remote"
 	}
 };

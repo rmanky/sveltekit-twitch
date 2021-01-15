@@ -4,3 +4,4 @@ node_modules
 /media
 /ffmpeg
 .env
+.snowpack

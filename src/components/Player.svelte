@@ -25,7 +25,7 @@
 </script>
 
 <div>
-    {#if mediaURL}
+    {#if Player}
         <Player controls>
             <Hls version="latest" {config}>
                 <source
