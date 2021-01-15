@@ -24,7 +24,7 @@ A [sveltekit](https://www.npmjs.com/package/@sveltejs/kit) powered [Twitch](http
 
 1. `git clone https://github.com/rmanky/sveltekit-twitch`
 2. `npm install`
-3. Create a `.env` file ([ffmpeg](https://ffmpeg.org/) & [ngrok](https://ngrok.com/))
+3. Create a `.env` file
     - Install [ffmpeg](https://ffmpeg.org/) and set `FFMPEG_PATH`
     - Create an [ngrok](https://ngrok.com/) account and set `NGROK_TOKEN`
     ```
