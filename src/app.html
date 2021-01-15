@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/bulma-prefers-dark" />
+	<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+
+	<style>
+		html {
+			overflow: auto;
+		}
+
+		#svelte-announcer {
+			display: none;
+		}
+	</style>
+
+	%svelte.head%
+</head>
+
+<body>
+	<div id="svelte">%svelte.body%</div>
+</body>
+
+</html>
