@@ -23,7 +23,7 @@
         <Player controls>
             <Hls version="latest" {config}>
                 <source
-                    data-src="{mediaURL}/live/rmanky/index.m3u8"
+                    data-src="{mediaURL}/live/svelte/index.m3u8"
                     type="application/x-mpegURL"
                 />
             </Hls>

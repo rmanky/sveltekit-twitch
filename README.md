@@ -1,39 +1,37 @@
-# create-svelte
+Here be 🐉's...
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+## SvelteKit Twitch
 
-## Creating a project
+A [sveltekit](https://www.npmjs.com/package/@sveltejs/kit) powered [Twitch](https://www.twitch.tv/) altnerative/clone.
 
-If you're seeing this, you've probably already done this step. Congrats!
+![sveltekit-twitch](https://i.imgur.com/gbOK75J.png)
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## About
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+- **Emotes** are obtained through Twitch's global emotes and the [top 300 BTTV](https://betterttv.com/emotes/top) emotes 
 
-> Note: the `@next` is temporary
+- **Usernames**, along with their `hue`, are randomly generated and stored in `localStorage`
 
-## Developing
+- **Chat** is powered by [socket.io](https://socket.io/)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **RTMP Server** for streaming via OBS
+    - The **Server** is `rtmp://localhost/live`
+    - The **Stream Key** is `svelte`
 
-```bash
-npm run dev
+- **FMPEG** converts the RTMP stream to a HLS stream for [Vime](https://vimejs.com/)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Setup
 
-## Building
-
-Svelte apps are built with _adapters_, which optimise your project for deployment to different environments, like [Begin](https://begin.com), [Netlify](https://www.netlify.com), [Vercel](https://vercel.com) and so on. (You can also create your own adapter — instructions TODO.)
-
-By default, `npm run build` will generate a Node app that you can run with `node build`. To use a different adapter, install it and update your `svelte.config.js` accordingly. The following official adapters are available:
-
-- [@sveltejs/adapter-node](https://github.com/sveltejs/kit/tree/master/packages/adapter-node)
-- [@sveltejs/adapter-static](https://github.com/sveltejs/kit/tree/master/packages/adapter-static)
-- [@sveltejs/adapter-netlify](https://github.com/sveltejs/kit/tree/master/packages/adapter-netlify)
-- ...more soon
+1. `git clone https://github.com/rmanky/sveltekit-twitch`
+2. `npm install`
+3. Create a `.env` file ([ffmpeg](https://ffmpeg.org/) & [ngrok](https://ngrok.com/))
+    - Install [ffmpeg](https://ffmpeg.org/) and set `FFMPEG_PATH`
+    - Create an [ngrok](https://ngrok.com/) account and set `NGROK_TOKEN`
+    ```
+    FFMPEG_PATH=PATH_TO_FFMPEG.EXE
+    NGROK_TOKEN=YOUR_NGROK_TOKEN
+    ```
+4. `npm run build`
+5. `npm run adapt`
+6. `node server.js`
+7. Open the `HTTP URL` that is printed to the `console`
