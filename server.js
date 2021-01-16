@@ -58,8 +58,12 @@ const httpServer = http.Server(app);
   });
 
   io.on('connection', (socket) => {
+    socket.on('join', (room) => {
+      socket.join(room);
+    });
+
     socket.on('chat', (payload) => {
-      io.emit('chat', payload);
+      io.sockets.in(payload.room).emit('chat', payload)
     });
   })
 })();

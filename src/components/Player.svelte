@@ -1,6 +1,8 @@
 <script>
     import { onMount } from "svelte/internal";
 
+    export let stream;
+
     let mediaURL = "";
     let Player, Ui, Hls;
 
@@ -29,7 +31,7 @@
         <Player controls>
             <Hls version="latest" {config}>
                 <source
-                    data-src="{mediaURL}/live/svelte/index.m3u8"
+                    data-src="{mediaURL}/live/{stream}/index.m3u8"
                     type="application/x-mpegURL"
                 />
             </Hls>

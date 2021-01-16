@@ -1,33 +1,32 @@
 <script>
-	import Chat from "$components/Chat.svelte";
-	import Player from "$components/Player.svelte";
+	const list = ["rmanky", "yourMom", "funnyName"];
 </script>
 
-<main class="columns is-gapless mb-0 has-background-black">
-	<div class="player column">
-		<Player />
-	</div>
-	<div class="chat column is-narrow">
-		<Chat />
+<main class="hero is-dark is-fullheight">
+	<div class="hero-body">
+		<div class="container">
+			<div class="columns">
+				{#each list as room}
+					<div class="column">
+						<div class="card" style="display: flex; flex-direction: column; height: 100%;">
+							<div class="card-content">
+								<p class="title">
+									{room} is live!
+								</p>
+								<p class="subtitle">Go ahead, tune in 😉</p>
+							</div>
+							<footer class="card-footer" style="margin-top: auto">
+								<p class="card-footer-item">
+									<a class="button is-link" href="/live/{room}"> Watch now! </a>
+								</p>
+							</footer>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
 	</div>
 </main>
 
 <style>
-	.columns {
-		height: 100vh;
-		display: flex;
-	}
-
-	.player {
-		flex: 1 1 auto;
-    	align-self: center;
-	}
-
-	.chat {
-		width: 350px;
-		flex: 0 1 auto;
-		display: flex;
-		flex-direction: column;
-		background: #111111;
-	}
 </style>

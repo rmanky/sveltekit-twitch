@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { onMount } from "svelte/internal";
-	import { tick } from 'svelte';
+	import { tick } from "svelte";
 
-	//import { io } from 'socket.io-client';
-
-	//console.log(io);
+	export let stream;
 
 	let hue;
 
@@ -21,6 +19,8 @@
 	let socketURL = "";
 
 	onMount(async () => {
+		
+
 		username =
 			window.localStorage.getItem("user") ||
 			`Guest #${Math.random().toString().substr(2, 4)}`;
@@ -39,9 +39,12 @@
 
 		const socketResponse = await fetch("/socket");
 		const socketData = await socketResponse.json();
+		
 		const { socketURL } = socketData;
 
 		socket = io(socketURL);
+
+		socket.emit("join", stream);
 
 		const emoteResponse = await fetch("/emotes");
 		const emoteList = await emoteResponse.json();
@@ -66,7 +69,7 @@
 			payload.msg = temp;
 			messages = [...messages, payload];
 
-			if(messageContainer) {
+			if (messageContainer) {
 				await tick();
 				messageContainer.scrollTop = messageContainer.scrollHeight;
 			}
@@ -75,8 +78,7 @@
 
 	function sendMessage() {
 		if (message && socket) {
-			socket.emit("chat", { user: username, msg: message, hue: hue });
-			console.log(message);
+			socket.emit("chat", { user: username, msg: message, hue: hue, room: stream });
 			messageHistory.push(message);
 			message = "";
 		}
@@ -99,7 +101,7 @@
 				<span style="color: hsl({hue},90%,75%)">{user}:</span>
 				{#each msg as { txt, alt }}
 					{#if alt}
-						<img alt={alt} src={txt} />
+						<img {alt} src={txt} />
 					{:else}
 						{txt}
 					{/if}
