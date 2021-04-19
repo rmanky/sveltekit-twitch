@@ -2,7 +2,7 @@ Here be 🐉's...
 
 ## SvelteKit Twitch
 
-A [sveltekit](https://www.npmjs.com/package/@sveltejs/kit) powered [Twitch](https://www.twitch.tv/) altnerative/clone.
+A [sveltekit](https://www.npmjs.com/package/@sveltejs/kit) powered [Twitch](https://www.twitch.tv/) clone.
 
 ![sveltekit-twitch](https://i.imgur.com/gbOK75J.png)
 
